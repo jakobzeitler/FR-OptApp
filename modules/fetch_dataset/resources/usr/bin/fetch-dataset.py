@@ -33,6 +33,14 @@ if __name__ == '__main__':
     # 3. Save data
     dataset.to_csv(args.data, sep='\t')
 
+    # 3. Get OptApp options
+
+    opt_runs = client.opt_run_list(project)
+    print(opt_runs)
+    opt_run = [p for p in opt_runs if int(p.id) == int(args.opt_run_id)][0]
+    print(opt_run.run_options)
+
+
 
     # 4. Do BO
     import torch
